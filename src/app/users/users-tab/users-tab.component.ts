@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import {IUser} from "../IUser";
 import {mockUsers} from "../mockUsers";
+import {UsersService} from '../users.service';
 
 @Component({
   selector: 'app-users-tab',
@@ -10,20 +12,23 @@ import {mockUsers} from "../mockUsers";
 export class UsersTabComponent implements OnInit {
 
   searchValue: string = '';
-  users: IUser[] = mockUsers.map(user => {
-    return {
-      ...user,
-      isSelected: false
-    }
-  });
-
+  users: IUser[] = [];
   sortingAsc: boolean = true;
 
-  constructor() { 
-
-  }
+  constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {
+    this.getUsers();
+  }
+
+  getUsers(): void {
+    this.usersService.getUsers()
+        .subscribe(users => this.users = users.map(user => {
+          return {
+            ...user,
+            isSelected: false
+          }
+        }));
   }
 
   onSearchInput(value: string) {
