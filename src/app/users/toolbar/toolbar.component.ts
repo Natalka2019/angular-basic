@@ -15,9 +15,11 @@ export class ToolbarComponent implements OnInit {
   @Output() onDelete = new EventEmitter();
   @Output() onSort = new EventEmitter();
 
-  selectAllButtonTitle: string = "SelectAll";
+  selectAllButtonTitle: string = "Select all";
   deleteButtonTitle: string = "Delete";
-  sortButtonTitle: string = "Sort";
+  sortButtonTitle: string = "Sorting order";
+
+  swap_vert: string = "swap_vert";
 
   constructor() { 
   }

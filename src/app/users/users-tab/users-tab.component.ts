@@ -17,6 +17,8 @@ export class UsersTabComponent implements OnInit {
     }
   });
 
+  sortingAsc: boolean = true;
+
   constructor() { 
 
   }
@@ -52,12 +54,7 @@ export class UsersTabComponent implements OnInit {
   }
 
   onSelectAll() {
-    this.users = this.users.map(user => {
-      return {
-        ...user,
-        isSelected: true
-      }
-    });
+    this.users.forEach(user => user.isSelected = true);
   }
 
   onDelete() {
@@ -66,7 +63,15 @@ export class UsersTabComponent implements OnInit {
 
   onSort() {
 
-    const newArr = [...this.users].sort((a, b) => a.lastName.localeCompare(b.lastName))
+    this.sortingAsc = !this.sortingAsc;
+
+    let newArr: IUser[]= [];
+
+    if(this.sortingAsc) {
+      newArr = [...this.users].sort((a, b) => b.lastName.localeCompare(a.lastName))
+    } else {
+      newArr = [...this.users].sort((a, b) => a.lastName.localeCompare(b.lastName))
+    }
 
     this.users = newArr;
   }

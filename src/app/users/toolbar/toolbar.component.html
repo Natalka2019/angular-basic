@@ -1,8 +1,10 @@
 <div class="toolbar">
-  <app-button [title]="selectAllButtonTitle" (onButtonClick)="onSelectAllButtonClick()">
+  <app-button color="primary" [title]="selectAllButtonTitle" (onButtonClick)="onSelectAllButtonClick()">
   </app-button>
-  <app-button [title]="deleteButtonTitle" (onButtonClick)="onDeleteButtonClick()"></app-button>
-  <app-button [title]="sortButtonTitle" (onButtonClick)="onSortButtonClick()"></app-button>
-  <input-clearable (onInput)="onInput($event)" [value]="searchValue" (onClearInput)="onClearInput()">
+  <app-button color="accent" [title]="deleteButtonTitle" (onButtonClick)="onDeleteButtonClick()"></app-button>
+  <app-button color="primary" [title]="sortButtonTitle" (onButtonClick)="onSortButtonClick()" [icon]="swap_vert">
+  </app-button>
+  <input-clearable class="inputClearable" (onInput)="onInput($event)" [value]="searchValue"
+    (onClearInput)="onClearInput()">
   </input-clearable>
 </div>
