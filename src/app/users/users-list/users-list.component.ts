@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {IUser} from "../IUser";
 import {mockUsers} from "../mockUsers";
 
@@ -11,12 +11,17 @@ import {mockUsers} from "../mockUsers";
 export class UsersListComponent implements OnInit {
 
   @Input() usersList: IUser[] = [];
+  @Output() onSelect = new EventEmitter();
 
   constructor() { 
 
   }
 
   ngOnInit(): void {
+  }
+
+  onCheck(event: any) {
+    this.onSelect.emit(event);
   }
 
 }

@@ -11,6 +11,13 @@ export class ToolbarComponent implements OnInit {
   @Input() searchValue: string ='';
   @Output() onSearchInput = new EventEmitter<string>();
   @Output() onClearSearchInput = new EventEmitter();
+  @Output() onSelectAll = new EventEmitter();
+  @Output() onDelete = new EventEmitter();
+  @Output() onSort = new EventEmitter();
+
+  selectAllButtonTitle: string = "SelectAll";
+  deleteButtonTitle: string = "Delete";
+  sortButtonTitle: string = "Sort";
 
   constructor() { 
   }
@@ -24,6 +31,18 @@ export class ToolbarComponent implements OnInit {
 
   onClearInput() {
     this.onClearSearchInput.emit();
+  }
+
+  onSelectAllButtonClick() {
+    this.onSelectAll.emit();
+  }
+
+  onDeleteButtonClick() {
+    this.onDelete.emit();
+  }
+
+  onSortButtonClick() {
+    this.onSort.emit();
   }
 
 }

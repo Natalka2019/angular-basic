@@ -1,5 +1,6 @@
-<mat-card class="example-card" id={{user.id}}>
-  <mat-checkbox class="example-margin"></mat-checkbox>
+<mat-card class="example-card">
+  <mat-checkbox class="example-margin" id={{user.id}} [(ngModel)]="user.isSelected" (change)="onSelect($event)">
+  </mat-checkbox>
   <picture>
     <img class="image" src={{user.avatar}} alt="Avatar" />
   </picture>

@@ -10,7 +10,12 @@ import {mockUsers} from "../mockUsers";
 export class UsersTabComponent implements OnInit {
 
   searchValue: string = '';
-  users: IUser[] = mockUsers;
+  users: IUser[] = mockUsers.map(user => {
+    return {
+      ...user,
+      isSelected: false
+    }
+  });
 
   constructor() { 
 
@@ -30,6 +35,40 @@ export class UsersTabComponent implements OnInit {
   onClearSearchInput() {
     this.searchValue = '';
     this.users = mockUsers;
+  }
+
+  onSelect(event: any) {
+    const id = event.source.id;
+
+    const index = this.users.findIndex(user => user.id === id);
+
+    if(index !== -1) {
+      this.users[index] = {
+        ...this.users[index],
+        isSelected: event.checked
+      };
+    };
+
+  }
+
+  onSelectAll() {
+    this.users = this.users.map(user => {
+      return {
+        ...user,
+        isSelected: true
+      }
+    });
+  }
+
+  onDelete() {
+    this.users = this.users.filter(user => !user.isSelected);
+  }
+
+  onSort() {
+
+    const newArr = [...this.users].sort((a, b) => a.lastName.localeCompare(b.lastName))
+
+    this.users = newArr;
   }
 
 }

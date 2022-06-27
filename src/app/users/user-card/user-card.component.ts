@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {IUser} from "../IUser";
 
 @Component({
@@ -9,20 +9,25 @@ import {IUser} from "../IUser";
 
 export class UserCardComponent implements OnInit {
 
-  @Input() user: IUser;
+  @Input() user: IUser = {
+    id: 0,
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    avatar: "",
+    isSelected: false
+  };
 
-  constructor() { 
-    this.user = {
-      id: "",
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      avatar: ""
-    }
-  }
 
-  ngOnInit(): void {
+  @Output() onCheck = new EventEmitter();
+
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  onSelect(event: any) {
+    this.onCheck.emit(event);
   }
 
 }
