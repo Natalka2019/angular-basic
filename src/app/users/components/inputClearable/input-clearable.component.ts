@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 /**
  * @title Input with a clear button
@@ -13,12 +13,9 @@ export class InputClearableComponent {
   @Output() onInput = new EventEmitter<string>();
   @Output() onClearInput = new EventEmitter();
 
-  constructor() { 
+  constructor() {}
 
-  }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onInputChange(): void {
     this.onInput.emit(this.value);
@@ -27,5 +24,4 @@ export class InputClearableComponent {
   onClear(): void {
     this.onClearInput.emit();
   }
-
 }

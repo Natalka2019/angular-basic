@@ -3,22 +3,19 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+  styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent implements OnInit {
-
-  @Input() title: string ='';
-  @Input() icon: string ='';
-  @Input() color: string ='';
+  @Input() title: string = '';
+  @Input() icon: string = '';
+  @Input() color: string = '';
   @Output() onButtonClick = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onClick() {
     this.onButtonClick.emit();
   }
-
 }

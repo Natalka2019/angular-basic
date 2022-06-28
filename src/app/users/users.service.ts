@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import {IUser} from "./IUser";
-import {mockUsers} from "./mockUsers";
+import { IUser } from './IUser';
+import { mockUsers } from './mockUsers';
 
 @Injectable()
-
 export class UsersService {
+  constructor() {}
 
-  constructor() { }
-
-  getUsers():Observable<IUser[]> {
+  getUsers(): Observable<IUser[]> {
     const users = of(mockUsers);
     return users;
   }

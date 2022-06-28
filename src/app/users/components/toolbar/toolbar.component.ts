@@ -1,15 +1,13 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss']
+  styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnInit {
-
-  @Input() searchValue: string ='';
-  @Input() icon: string ='';
+  @Input() searchValue: string = '';
+  @Input() icon: string = '';
 
   @Output() onSearchInput = new EventEmitter<string>();
   @Output() onClearSearchInput = new EventEmitter();
@@ -17,16 +15,14 @@ export class ToolbarComponent implements OnInit {
   @Output() onDelete = new EventEmitter();
   @Output() onSort = new EventEmitter();
 
-  selectAllButtonTitle: string = "Select all";
-  deleteButtonTitle: string = "Delete";
-  sortButtonTitle: string = "Sorting order";
+  selectAllButtonTitle: string = 'Select all';
+  deleteButtonTitle: string = 'Delete';
+  sortButtonTitle: string = 'Sorting order';
 
-  constructor() { 
-  }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-  
+  ngOnInit(): void {}
+
   onInput(valueFromInput: string) {
     this.onSearchInput.emit(valueFromInput);
   }
@@ -46,5 +42,4 @@ export class ToolbarComponent implements OnInit {
   onSortButtonClick() {
     this.onSort.emit();
   }
-
 }

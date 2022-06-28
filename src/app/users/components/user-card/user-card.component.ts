@@ -1,24 +1,21 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {IUser} from "../../IUser";
+import { IUser } from '../../IUser';
 
 @Component({
   selector: 'app-user-card',
   templateUrl: './user-card.component.html',
-  styleUrls: ['./user-card.component.scss']
+  styleUrls: ['./user-card.component.scss'],
 })
-
 export class UserCardComponent implements OnInit {
-
   @Input() user: IUser = {
     id: 0,
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    avatar: "",
-    isSelected: false
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    avatar: '',
+    isSelected: false,
   };
-
 
   @Output() onCheck = new EventEmitter();
 
@@ -29,5 +26,4 @@ export class UserCardComponent implements OnInit {
   onSelect(event: any) {
     this.onCheck.emit(event);
   }
-
 }
