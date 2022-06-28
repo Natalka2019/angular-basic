@@ -15,6 +15,8 @@ import {InputClearableComponent} from './components/inputClearable/input-clearab
 import { UsersTabComponent } from './components/users-tab/users-tab.component';
 import { ButtonComponent } from './components/button/button.component'; 
 
+import {UsersService} from './users.service';
+
 
 
 @NgModule({
@@ -37,6 +39,7 @@ import { ButtonComponent } from './components/button/button.component';
   ],
   exports: [
     UsersTabComponent
-  ]
+  ],
+  providers: [UsersService]
 })
 export class UsersModule { }

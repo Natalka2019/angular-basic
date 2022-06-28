@@ -14,6 +14,7 @@ export class UsersTabComponent implements OnInit {
   searchValue: string = '';
   users: IUser[] = [];
   sortingAsc: boolean = true;
+  sortIcon: string = "expand_less";
 
   constructor(private usersService: UsersService) {}
 
@@ -66,19 +67,22 @@ export class UsersTabComponent implements OnInit {
     this.users = this.users.filter(user => !user.isSelected);
   }
 
+  getName(user: IUser) {
+    return `${user.firstName}${user.lastName}`
+  }
+
   onSort() {
 
     this.sortingAsc = !this.sortingAsc;
-
-    let newArr: IUser[]= [];
+    
+    this.sortIcon = this.sortingAsc? "expand_less" : "expand_more"
 
     if(this.sortingAsc) {
-      newArr = [...this.users].sort((a, b) => b.lastName.localeCompare(a.lastName))
+      this.users = [...this.users].sort((a, b) => this.getName(b).localeCompare(this.getName(a)))
     } else {
-      newArr = [...this.users].sort((a, b) => a.lastName.localeCompare(b.lastName))
+      this.users = [...this.users].sort((a, b) => this.getName(a).localeCompare(this.getName(b)))
     }
 
-    this.users = newArr;
   }
 
 }

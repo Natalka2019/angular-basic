@@ -9,6 +9,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ToolbarComponent implements OnInit {
 
   @Input() searchValue: string ='';
+  @Input() icon: string ='';
+
   @Output() onSearchInput = new EventEmitter<string>();
   @Output() onClearSearchInput = new EventEmitter();
   @Output() onSelectAll = new EventEmitter();
@@ -18,8 +20,6 @@ export class ToolbarComponent implements OnInit {
   selectAllButtonTitle: string = "Select all";
   deleteButtonTitle: string = "Delete";
   sortButtonTitle: string = "Sorting order";
-
-  swap_vert: string = "swap_vert";
 
   constructor() { 
   }

@@ -1,4 +1,5 @@
 <app-toolbar [searchValue]="searchValue" (onSearchInput)="onSearchInput($event)"
-  (onClearSearchInput)="onClearSearchInput()" (onSelectAll)="onSelectAll()" (onDelete)="onDelete()" (onSort)="onSort()">
+  (onClearSearchInput)="onClearSearchInput()" (onSelectAll)="onSelectAll()" (onDelete)="onDelete()" (onSort)="onSort()"
+  [icon]="sortIcon">
 </app-toolbar>
 <app-users-list [usersList]="users" (onSelect)="onSelect($event)"></app-users-list>

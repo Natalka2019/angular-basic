@@ -4,9 +4,8 @@ import { Observable, of } from 'rxjs';
 import {IUser} from "./IUser";
 import {mockUsers} from "./mockUsers";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
+
 export class UsersService {
 
   constructor() { }
