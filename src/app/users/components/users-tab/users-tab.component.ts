@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import {IUser} from "../IUser";
-import {mockUsers} from "../mockUsers";
-import {UsersService} from '../users.service';
+import {IUser} from "../../IUser";
+import {mockUsers} from "../../mockUsers";
+import {UsersService} from '../../users.service';
 
 @Component({
   selector: 'app-users-tab',

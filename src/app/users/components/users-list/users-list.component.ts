@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {IUser} from "../IUser";
-import {mockUsers} from "../mockUsers";
+import {IUser} from "../../IUser";
+import {mockUsers} from "../../mockUsers";
 
 
 @Component({
