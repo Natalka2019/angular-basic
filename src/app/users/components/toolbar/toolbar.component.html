@@ -4,6 +4,9 @@
   <app-button color="accent" [title]="deleteButtonTitle" (onButtonClick)="onDeleteButtonClick()"></app-button>
   <app-button color="primary" [title]="sortButtonTitle" (onButtonClick)="onSortButtonClick()" [icon]="icon">
   </app-button>
+  <div *ngIf="addUserButtonTitle">
+    <app-button color="primary" [title]="addUserButtonTitle" (onButtonClick)="onAddUsersButtonClick()"></app-button>
+  </div>
   <input-clearable class="inputClearable" (onInput)="onInput($event)" [value]="searchValue"
     (onClearInput)="onClearInput()">
   </input-clearable>

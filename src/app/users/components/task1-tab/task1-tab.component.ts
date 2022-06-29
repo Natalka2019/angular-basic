@@ -2,20 +2,20 @@ import { Component, OnInit } from '@angular/core';
 
 import { IUser } from '../../IUser';
 import { mockUsers } from '../../mockUsers';
-import { UsersService } from '../../users.service';
+import { Task1Service } from '../../task1.service';
 
 @Component({
-  selector: 'app-users-tab',
-  templateUrl: './users-tab.component.html',
-  styleUrls: ['./users-tab.component.scss'],
+  selector: 'app-task1-tab',
+  templateUrl: './task1-tab.component.html',
+  styleUrls: ['./task1-tab.component.scss'],
 })
-export class UsersTabComponent implements OnInit {
+export class Task1TabComponent implements OnInit {
   searchValue: string = '';
   users: IUser[] = [];
   sortingAsc: boolean = true;
   sortIcon: string = 'expand_less';
 
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: Task1Service) {}
 
   ngOnInit(): void {
     this.getUsers();

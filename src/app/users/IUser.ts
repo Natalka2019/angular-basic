@@ -1,9 +1,10 @@
 export interface IUser {
-  id: number | string;
+  id: number;
   firstName: string;
   lastName: string;
   email: string;
   phone: number | string;
   avatar: string;
   isSelected?: boolean;
+  name?: string;
 }

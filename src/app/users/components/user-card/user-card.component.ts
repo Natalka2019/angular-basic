@@ -9,6 +9,7 @@ import { IUser } from '../../IUser';
 export class UserCardComponent implements OnInit {
   @Input() user: IUser = {
     id: 0,
+    name: '',
     firstName: '',
     lastName: '',
     email: '',
@@ -19,9 +20,13 @@ export class UserCardComponent implements OnInit {
 
   @Output() onCheck = new EventEmitter();
 
+  haveName: boolean = false;
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.haveName = this.user.name !== undefined;
+  }
 
   onSelect(event: any) {
     this.onCheck.emit(event);

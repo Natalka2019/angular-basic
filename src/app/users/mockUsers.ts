@@ -82,7 +82,7 @@ const mockUsersJSON = `[
 ]`;
 
 export interface IUser {
-  id: number | string;
+  id: number;
   firstName: string;
   lastName: string;
   email: string;

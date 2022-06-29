@@ -5,7 +5,7 @@ import { IUser } from './IUser';
 import { mockUsers } from './mockUsers';
 
 @Injectable()
-export class UsersService {
+export class Task1Service {
   constructor() {}
 
   getUsers(): Observable<IUser[]> {
