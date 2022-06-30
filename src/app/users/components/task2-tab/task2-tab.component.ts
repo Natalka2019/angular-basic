@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { IUser } from '../../IUser';
@@ -18,7 +19,7 @@ export class Task2TabComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   addUserButtonTitle: string = 'Add user';
 
-  constructor(private usersService: Task2Service) {}
+  constructor(private usersService: Task2Service, private router: Router) {}
 
   ngOnInit(): void {
     this.getUsers();
@@ -103,7 +104,7 @@ export class Task2TabComponent implements OnInit, OnDestroy {
   }
 
   onAdd() {
-    console.log('Add button click');
+    this.router.navigate(['/addUser']);
   }
 
   ngOnDestroy(): void {

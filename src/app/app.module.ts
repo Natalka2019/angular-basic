@@ -9,10 +9,12 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 
 import { UsersModule } from './users/users.module';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './components/header/header.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent, HeaderComponent, NotFoundComponent, MainPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

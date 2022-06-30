@@ -1,0 +1,53 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 40px auto;
+}
+
+.label {
+  margin-top: 5px;
+}
+
+.input {
+  margin: 5px 0 5px 0;
+  font-size: 20px;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid rgb(80, 166, 223);
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.addButton,
+.cancelButton {
+  border: none;
+  width: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  letter-spacing: 0.1rem;
+  margin-top: 10px;
+}
+.AddButton:hover,
+.cancelButton:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cancelButton {
+  border: none;
+  align-self: flex-end;
+  cursor: pointer;
+  border: 1px solid rgb(192, 188, 188);
+}
+
+.addButton {
+  align-self: flex-end;
+  color: #fff;
+  background-color: rgb(55, 55, 172);
+  margin-left: 20px;
+  border: 1px solid rgb(55, 55, 172);
+}
