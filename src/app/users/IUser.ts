@@ -4,7 +4,7 @@ export interface IUser {
   lastName: string;
   email: string;
   phone: number | string;
-  avatar: string;
+  avatar?: string;
   isSelected?: boolean;
   name?: string;
 }

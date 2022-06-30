@@ -2,15 +2,61 @@
   <form class="form" [formGroup]="newUserForm">
     <label class="label">Firs name</label>
     <input type="text" class="input" formControlName="firstName">
+    <div *ngIf="newUserForm.get('firstName')?.invalid && 
+    newUserForm.get('firstName')?.errors && 
+        (newUserForm.get('firstName')?.dirty || newUserForm.get('firstName')?.touched)">
+      <small class="text-danger" *ngIf="newUserForm.get('firstName')?.hasError('required')">
+        This field is required.
+      </small>
+      <small class="text-danger" *ngIf="newUserForm.get('firstName')?.hasError('minlength')">
+        The minimum length for this field is {{minLength}}
+        characters.
+      </small>
+    </div>
     <label class="label">Last name</label>
-    <input type="text" class="input" formControlName="firstName">
+    <input type="text" class="input" formControlName="lastName">
+    <div *ngIf="newUserForm.get('lastName')?.invalid && 
+    newUserForm.get('lastName')?.errors && 
+        (newUserForm.get('lastName')?.dirty || newUserForm.get('lastName')?.touched)">
+      <small class="text-danger" *ngIf="newUserForm.get('lastName')?.hasError('required')">
+        This field is required.
+      </small>
+      <small class="text-danger" *ngIf="newUserForm.get('lastName')?.hasError('minlength')">
+        The minimum length for this field is {{minLength}}
+        characters.
+      </small>
+      <small class="text-danger" *ngIf="newUserForm.get('lastName')?.hasError('maxlength')">
+        The maximum length for this field is {{maxLength}}
+        characters.
+      </small>
+    </div>
     <label class="label">Email</label>
     <input type="text" class="input" formControlName="email">
+    <div *ngIf="newUserForm.get('email')?.invalid && 
+    newUserForm.get('email')?.errors && 
+        (newUserForm.get('email')?.dirty || newUserForm.get('email')?.touched)">
+      <small class="text-danger" *ngIf="newUserForm.get('email')?.hasError('required')">
+        This field is required.
+      </small>
+      <small class="text-danger" *ngIf="newUserForm.get('email')?.hasError('email')">
+        This is not a valid email.
+      </small>
+    </div>
     <label class="label">Phone number</label>
     <input type="text" class="input" formControlName="phone">
+    <div *ngIf="newUserForm.get('phone')?.invalid && 
+    newUserForm.get('phone')?.errors && 
+        (newUserForm.get('phone')?.dirty || newUserForm.get('phone')?.touched)">
+      <small class="text-danger" *ngIf="newUserForm.get('phone')?.hasError('required')">
+        This field is required.
+      </small>
+      <small class="text-danger" *ngIf="newUserForm.get('phone')?.hasError('pattern')">
+        Only numbers allowed.
+      </small>
+    </div>
     <div class="buttonsContainer">
       <button class="cancelButton" (click)="onCancel()">Cancel</button>
-      <button type="submit" class="addButton" (click)="onAddUser()">Add user</button>
+      <button type="submit" class="addButton" (click)="onAddUser()" [disabled]="newUserForm.invalid">Add user</button>
     </div>
   </form>
 </div>

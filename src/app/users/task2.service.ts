@@ -15,4 +15,14 @@ export class Task2Service {
   public deleteUser(id: number): Observable<number> {
     return this.http.delete<number>(`https://jsonplaceholder.typicode.com/users/${id}`);
   }
+
+  public addUser(user: IUser): Observable<IUser> {
+    const httpOptions = {
+      body: JSON.stringify(user),
+      headers: new Headers({
+        'Content-type': 'application/json; charset=UTF-8',
+      }),
+    };
+    return this.http.post<IUser>(`https://jsonplaceholder.typicode.com/users/`, httpOptions);
+  }
 }
