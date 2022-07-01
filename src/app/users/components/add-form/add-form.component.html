@@ -4,7 +4,7 @@
 
   <form *ngIf="!showStatusContent && !isLoading" class="form" [formGroup]="newUserForm">
 
-    <label class="label">Firs name</label>
+    <label class="label">*Firs name</label>
     <input type="text" class="input" formControlName="firstName">
     <div *ngIf="newUserForm.get('firstName')?.invalid && 
       newUserForm.get('firstName')?.errors && 
@@ -17,7 +17,7 @@
         characters.
       </small>
     </div>
-    <label class="label">Last name</label>
+    <label class="label">*Last name</label>
     <input type="text" class="input" formControlName="lastName">
     <div *ngIf="newUserForm.get('lastName')?.invalid && 
       newUserForm.get('lastName')?.errors && 
@@ -34,7 +34,7 @@
         characters.
       </small>
     </div>
-    <label class="label">Email</label>
+    <label class="label">*Email</label>
     <input type="text" class="input" formControlName="email">
     <div *ngIf="newUserForm.get('email')?.invalid && 
       newUserForm.get('email')?.errors && 
@@ -46,7 +46,7 @@
         This is not a valid email.
       </small>
     </div>
-    <label class="label">Phone number</label>
+    <label class="label">*Phone number</label>
     <input type="text" class="input" formControlName="phone">
     <div *ngIf="newUserForm.get('phone')?.invalid && 
       newUserForm.get('phone')?.errors && 
@@ -61,7 +61,7 @@
 
     <mat-dialog-actions>
       <button class="cancelButton" mat-dialog-close>Cancel</button>
-      <button type="submit" class="addButton" (click)="onAddUser()">Add user</button>
+      <button type="submit" class="addButton" (click)="onAddUser()" [disabled]="newUserForm.invalid">Add user</button>
     </mat-dialog-actions>
 
   </form>
