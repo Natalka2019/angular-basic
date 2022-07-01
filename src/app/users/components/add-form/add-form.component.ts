@@ -11,7 +11,7 @@ import { DataService } from '../../data.service';
   styleUrls: ['./add-form.component.scss'],
 })
 export class AddFormComponent implements OnInit, OnDestroy {
-  minLength = 2;
+  minLength = 3;
   maxLength = 60;
   validation = [Validators.minLength(this.minLength), Validators.required];
   isLoading: boolean = false;
@@ -30,10 +30,10 @@ export class AddFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.newUserForm = this.formBuilder.group({
-      firstName: ['AB', this.validation],
-      lastName: ['CD', [...this.validation, Validators.maxLength(60)]],
-      email: ['a@b', [Validators.required, Validators.email]],
-      phone: ['1', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      firstName: ['', this.validation],
+      lastName: ['', [...this.validation, Validators.maxLength(60)]],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
     });
   }
 
@@ -49,11 +49,11 @@ export class AddFormComponent implements OnInit, OnDestroy {
         this.showStatusContent = true;
 
         const updatedUser = {
-          ...this.newUserForm.value,
+          ...response,
           isSelected: false,
           avatar:
             'https://cdn4.iconfinder.com/data/icons/people-avatar-filled-outline/64/old_glasses_people_woman_grandmother_avatar_elderly-256.png',
-          name: `${this.newUserForm.value.firstName} ${this.newUserForm.value.lastName}`,
+          name: `${response.firstName} ${response.lastName}`,
         };
 
         this.dataService.addUserToList(updatedUser);
