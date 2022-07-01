@@ -17,12 +17,6 @@ export class Task2Service {
   }
 
   public addUser(user: IUser): Observable<IUser> {
-    const httpOptions = {
-      body: JSON.stringify(user),
-      headers: new Headers({
-        'Content-type': 'application/json; charset=UTF-8',
-      }),
-    };
-    return this.http.post<IUser>(`https://jsonplaceholder.typicode.com/users/`, httpOptions);
+    return this.http.post<IUser>('https://jsonplaceholder.typicode.com/users', user);
   }
 }

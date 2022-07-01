@@ -1,10 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
 
 import { IUser } from '../../IUser';
 import { mockAvatars } from '../../mockAvatars';
 import { Task2Service } from '../../task2.service';
+import { DataService } from '../../data.service';
+import { AddFormComponent } from '../add-form/add-form.component';
 
 @Component({
   selector: 'app-task2-tab',
@@ -18,24 +21,44 @@ export class Task2TabComponent implements OnInit, OnDestroy {
   sortIcon: string = 'expand_less';
   subscriptions: Subscription[] = [];
   addUserButtonTitle: string = 'Add user';
+  isLoading: boolean = false;
+  errorMessage: string = '';
+  modalOpen: boolean = false;
 
-  constructor(private usersService: Task2Service, private router: Router) {}
+  constructor(
+    private usersService: Task2Service,
+    private dataService: DataService,
+    private router: Router,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.getUsers();
+    const dataSub = this.dataService.currentUser.subscribe((user) => this.users.unshift(user));
+    this.subscriptions.push(dataSub);
   }
 
   getUsers(): void {
-    const getUsersSub = this.usersService.getUsers().subscribe(
-      (users) =>
-        (this.users = users.map((user, index) => {
+    this.isLoading = true;
+    this.errorMessage = '';
+
+    const getUsersSub = this.usersService.getUsers().subscribe({
+      next: (response) => {
+        this.isLoading = false;
+        this.users = response.map((user, index) => {
           return {
             ...user,
             isSelected: false,
             avatar: mockAvatars[index],
           };
-        }))
-    );
+        });
+      },
+      error: (error) => {
+        this.isLoading = false;
+        console.log(error);
+        this.errorMessage = 'Oooops, something went wrong. Please try again later.';
+      },
+    });
 
     this.subscriptions.push(getUsersSub);
   }
@@ -103,9 +126,11 @@ export class Task2TabComponent implements OnInit, OnDestroy {
     }
   }
 
-  onAdd() {
-    this.router.navigate(['/addUser']);
+  openDialog() {
+    this.dialog.open(AddFormComponent);
   }
+
+  addUserToList() {}
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((sub) => sub.unsubscribe());

@@ -1,5 +1,11 @@
 <app-toolbar [searchValue]="searchValue" (onSearchInput)="onSearchInput($event)"
   (onClearSearchInput)="onClearSearchInput()" (onSelectAll)="onSelectAll()" (onDelete)="onDelete()" (onSort)="onSort()"
-  [icon]="sortIcon" [addUserButtonTitle]="addUserButtonTitle" (onAdd)="onAdd()">
+  [icon]="sortIcon" [addUserButtonTitle]="addUserButtonTitle" (onAdd)="openDialog()">
 </app-toolbar>
-<app-users-list [usersList]="users" (onSelect)="onSelect($event)"></app-users-list>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div *ngIf="errorMessage; else elseBlock" class="errorMessageContainer">
+  <p class="errorMessage">{{errorMessage}}</p>
+</div>
+<ng-template #elseBlock>
+  <app-users-list [usersList]="users" (onSelect)="onSelect($event)"></app-users-list>
+</ng-template>

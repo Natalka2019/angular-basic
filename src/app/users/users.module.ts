@@ -6,6 +6,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
@@ -18,6 +20,7 @@ import { AddFormComponent } from './components/add-form/add-form.component';
 
 import { Task1Service } from './task1.service';
 import { Task2Service } from './task2.service';
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
@@ -39,8 +42,10 @@ import { Task2Service } from './task2.service';
     MatIconModule,
     MatButtonModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
   ],
   exports: [Task1TabComponent, Task2TabComponent],
-  providers: [Task1Service, Task2Service],
+  providers: [Task1Service, Task2Service, DataService],
 })
 export class UsersModule {}
