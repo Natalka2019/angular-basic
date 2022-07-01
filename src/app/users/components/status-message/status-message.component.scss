@@ -1,0 +1,31 @@
+.mat-dialog-content {
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.okButton {
+  border: none;
+  width: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  letter-spacing: 0.1rem;
+  margin-top: 10px;
+}
+
+.successMessage {
+  color: rgb(23, 116, 61);
+  font-size: 20px;
+}
+
+.errorMessage {
+  color: rgb(194, 28, 28);
+  font-size: 20px;
+}
+
+.okButton {
+  color: #fff;
+  background-color: rgb(55, 55, 172);
+  float: right;
+}

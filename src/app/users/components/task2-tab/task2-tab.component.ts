@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -8,6 +7,7 @@ import { mockAvatars } from '../../mockAvatars';
 import { Task2Service } from '../../task2.service';
 import { DataService } from '../../data.service';
 import { AddFormComponent } from '../add-form/add-form.component';
+import { StatusMessageComponent } from '../status-message/status-message.component';
 
 @Component({
   selector: 'app-task2-tab',
@@ -24,13 +24,9 @@ export class Task2TabComponent implements OnInit, OnDestroy {
   isLoading: boolean = false;
   errorMessage: string = '';
   modalOpen: boolean = false;
+  successMessage: string = '';
 
-  constructor(
-    private usersService: Task2Service,
-    private dataService: DataService,
-    private router: Router,
-    public dialog: MatDialog
-  ) {}
+  constructor(private usersService: Task2Service, private dataService: DataService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.getUsers();
@@ -98,14 +94,40 @@ export class Task2TabComponent implements OnInit, OnDestroy {
   }
 
   onDelete() {
+    this.errorMessage = '';
+    this.successMessage = '';
+
     this.users.forEach((user) => {
       if (user.isSelected) {
         const id = user.id;
-        const deleteUserSub = this.usersService.deleteUser(id).subscribe((result) => {
-          console.log(result);
-          this.users = this.users.filter((user) => user.id !== id);
+        const deleteUserSub = this.usersService.deleteUser(id).subscribe({
+          next: (response) => {
+            const successMessage = `User with id: ${id} was successfully deleted.`;
+
+            this.dialog.open(StatusMessageComponent, {
+              data: { errorMessage: '', successMessage },
+            });
+
+            this.users = this.users.filter((user) => user.id !== id);
+          },
+          error: (error) => {
+            console.log(error);
+
+            const errorMessage = 'Oooops, something went wrong. Please try again later.';
+
+            this.dialog.open(StatusMessageComponent, {
+              data: { errorMessage, successMessage: '' },
+            });
+          },
         });
+
         this.subscriptions.push(deleteUserSub);
+
+        //     {
+        //       console.log(result);
+        //       this.users = this.users.filter((user) => user.id !== id);
+        //     });
+        //     this.subscriptions.push(deleteUserSub);
       }
     });
   }

@@ -21,6 +21,7 @@ import { AddFormComponent } from './components/add-form/add-form.component';
 import { Task1Service } from './task1.service';
 import { Task2Service } from './task2.service';
 import { DataService } from './data.service';
+import { StatusMessageComponent } from './components/status-message/status-message.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { DataService } from './data.service';
     Task2TabComponent,
     ButtonComponent,
     AddFormComponent,
+    StatusMessageComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,15 @@
+<mat-dialog-content>
+
+  <mat-spinner *ngIf="data.isLoading; else elseBlock"></mat-spinner>
+
+  <ng-template #elseBlock>
+    <div>
+      <p class="successMessage" *ngIf="data.successMessage; else errorBlock">{{data.successMessage}}</p>
+      <ng-template #errorBlock>
+        <p class="errorMessage">{{data.errorMessage}}</p>
+      </ng-template>
+      <button class="okButton" [mat-dialog-close]="true">OK</button>
+    </div>
+  </ng-template>
+
+</mat-dialog-content>
