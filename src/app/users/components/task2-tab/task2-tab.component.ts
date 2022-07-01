@@ -122,12 +122,6 @@ export class Task2TabComponent implements OnInit, OnDestroy {
         });
 
         this.subscriptions.push(deleteUserSub);
-
-        //     {
-        //       console.log(result);
-        //       this.users = this.users.filter((user) => user.id !== id);
-        //     });
-        //     this.subscriptions.push(deleteUserSub);
       }
     });
   }
